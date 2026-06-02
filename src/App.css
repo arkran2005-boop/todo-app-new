@@ -8,11 +8,12 @@ body {
 
 #root {
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh; /* Поменял на min-height, чтобы контент не обрезался при прокрутке */
 
   background-image: url("/830071-Japan-Lake-Forests-Flowering-trees-Mountains.jpg");
   background-size: cover;
   background-position: center;
+  background-attachment: fixed; /* Чтобы фон не уезжал при скролле */
   background-repeat: no-repeat;
 
   display: flex;
@@ -39,23 +40,27 @@ body {
 .info {
   display: flex;
   justify-content: center;
+  align-items: stretch; /* Заставляет все три карточки тянуться до одной высоты */
+  flex-wrap: wrap; /* Позволяет блокам переноситься на маленьких экранах */
   gap: 20px;
   margin-bottom: 20px;
 }
 
 .money,
-.weather-info {
+.weather-info,
+.vk-info {
   color: #ffffff;
   border: 2px solid white;
   border-radius: 30px;
 
   padding: 15px 25px;
   min-width: 180px;
+  max-width: 250px; /* Чтобы карточки не растягивались слишком сильно */
 
   display: flex;   
-  flex-direction: column;           /* добавили */
-  justify-content: center;    /* по горизонтали */
-  align-items: center;        /* по вертикали */
+  flex-direction: column;         
+  justify-content: center;    
+  align-items: center;        
 }
 
 h1 {
@@ -63,6 +68,7 @@ h1 {
   margin: 10px 0 40px;
 }
 
+/* Глобальные стили для главной формы задач */
 form {
   display: flex;
   justify-content: center;
@@ -79,6 +85,33 @@ input {
 button {
   padding: 20px;
   border: none;
+  border-radius: 0 8px 8px 0;
+  cursor: pointer;
+  background: white;
+  color: #1b5e20;
+  font-weight: bold;
+}
+
+/* Изолированные стили для мини-формы ВК */
+.vk-form {
+  display: flex;
+  justify-content: center;
+  margin: 10px 0 0 0; /* Убрал нижний отступ, чтобы блок не распирало */
+}
+
+.vk-form input {
+  padding: 10px;
+  border-radius: 8px 0 0 8px;
+  border: 1px solid white; /* Добавил легкую рамку для гармонии */
+  outline: none;
+  width: 120px;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.vk-form button {
+  padding: 10px 15px;
+  border: 1px solid white;
+  border-left: none;
   border-radius: 0 8px 8px 0;
   cursor: pointer;
   background: white;
